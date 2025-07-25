@@ -1,0 +1,191 @@
+:root {
+    --win-text-size: calc(var(--wheel-section-size) * 0.08);
+}
+
+.wheel-section {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--wheel-section-size);
+    height: var(--wheel-section-size);
+}
+
+.logo01 {
+    position: absolute;
+    left: 50%;
+    top: -5%;
+    width: 40%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+.letters-o {
+    animation: logoShine 2s ease-in-out infinite;
+    z-index: 101;
+}
+
+.wheel-arrow {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 700;
+    width: 12%;
+}
+
+.counter {
+    position: absolute;
+    top: -5%;
+    left: 70%;
+    z-index: 75;
+    width: 50%;
+    transition: all 0.3s ease;
+    transform-origin: center center;
+}
+
+.counter img {
+    width: 100%;
+    height: auto;
+}
+
+.counter-text {
+    position: absolute;
+    top: 43%;
+    left: 77%;
+    transform: translate(-50%, -50%);
+    z-index: 76;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #dfdfdf;
+    font-family: Arial, sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+}
+
+.wheel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 20;
+}
+
+.wheel-text-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.wheel-sprite-animation {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 44;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+[class*="sprite-wl"] {
+    visibility: inherit;
+    opacity: inherit;
+}
+
+.wheel-sprite-animation.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.win-text {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--win-text-size);
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 0 30px rgba(255, 165, 0, 0.3);
+    background: linear-gradient(to bottom, #FFF5CC, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 60;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.win-text.active {
+    visibility: visible;
+    animation: win-text-appear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    float-and-glow 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.5s;
+    transform-origin: center center;
+    background: linear-gradient(to bottom, #FFF5CC, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.win-sector {
+    position: absolute;
+    top: 28.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 98.5%;
+    z-index: 40;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.win-sector.active {
+    visibility: visible;
+    animation: fadeIn 0.2s ease-in-out forwards,
+    sector-glow 1.5s ease-in-out infinite 0.5s;
+}
+
+.spin-button-image {
+    position: absolute;
+    left: 50%;
+    bottom: -25%;
+    width: 45%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 80;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.spin-button-image.shaking {
+    animation: buttonShake 0.5s linear infinite, spinButtonGlow 2s infinite;
+}
+
+.spin-button-hover {
+    transform: translateX(-50%) scale(1.05) !important;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.4)) brightness(1.05) !important;
+}
+
+.spin-button-image:active {
+    transform: translateX(-50%) scale(0.95);
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.wheel-image.disabled,
+.spin-button-image.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.glow {
+    animation: glowEffect 1.5s infinite alternate;
+}

@@ -1,0 +1,217 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Add running glare across the entire overlay */
+.modal-overlay.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg,
+    rgba(255, 215, 0, 0) 0%,
+    rgba(255, 215, 0, 0.1) 45%,
+    rgba(255, 215, 0, 0.3) 50%,
+    rgba(255, 215, 0, 0.1) 55%,
+    rgba(255, 215, 0, 0) 100%);
+    transform: skewX(-20deg);
+    animation: overlayShiningEffect 8s infinite;
+    animation-delay: 1s;
+    pointer-events: none;
+    z-index: 1001;
+}
+
+@keyframes overlayShiningEffect {
+    0%, 5% {
+        left: -200%;
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 0.9;
+    }
+    95%, 100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+.modal-content {
+    background: url('../images/modal_bg.png') no-repeat center center;
+    background-size: contain;
+    padding: var(--spacing-lg);
+    text-align: center;
+    color: var(--color-text);
+    width: min(calc(var(--wheel-section-size) * 1.6), 550px);
+    min-width: min(calc(var(--wheel-section-size) * 1.2), 400px);
+    max-width: 550px;
+    height: auto;
+    aspect-ratio: 866 / 610;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 1002;
+    /* Add glow */
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 40px rgba(255, 165, 0, 0.5));
+}
+
+.modal-overlay.active .modal-content {
+    opacity: 1;
+}
+
+/* modalPulse animation removed */
+
+/* Remove glare from content, as it's now in overlay */
+.modal-content::after {
+    display: none;
+}
+
+/* Enhanced modal button styles */
+.modal-button {
+    background: url('../images/modal_button_bg.png') no-repeat center center;
+    background-size: contain;
+    border: none;
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    animation: buttonGlow 1.5s infinite alternate;
+    z-index: 1003;
+
+    /* Corrected relative sizes */
+    width: 66.67%;
+    height: 26%;
+}
+
+@keyframes buttonGlow {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    }
+    100% {
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) brightness(1.2);
+    }
+}
+
+.modal-button:hover {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7)) brightness(1.2);
+    transform: translateX(-50%) scale(1.05);
+}
+
+.modal-button:active {
+    transform: translateX(-50%) scale(0.98);
+    filter: brightness(0.95);
+    transition: all 0.1s ease-in-out;
+}
+
+/* Adaptive modal window sizing for different aspect ratios */
+@media (max-aspect-ratio: 9/16) {
+    .modal-content {
+        width: min(calc(var(--wheel-section-size) * 1.8), 550px);
+    }
+
+    .modal-button {
+        font-size: calc(var(--wheel-section-size) * 0.07);
+    }
+}
+
+@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 16/9) {
+    .modal-content {
+        width: min(calc(var(--wheel-section-size) * 1.6), 550px);
+    }
+
+    .modal-button {
+        font-size: calc(var(--wheel-section-size) * 0.06);
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .modal-content {
+        width: min(calc(var(--wheel-section-size) * 1.5), 550px);
+    }
+
+    .modal-button {
+        font-size: calc(var(--wheel-section-size) * 0.05);
+    }
+}
+
+/* Mobile modal size adjustments */
+@media (max-width: 530px) {
+    .modal-content {
+        width: min(calc(var(--wheel-section-size) * 1.1), 450px);
+        min-width: min(calc(var(--wheel-section-size) * 0.9), 300px);
+        max-width: 450px;
+    }
+    
+    .modal-button {
+        width: 70%;
+        height: 20%;
+        font-size: calc(var(--wheel-section-size) * 0.06);
+    }
+}
+
+/* Particle effect when opening modal */
+.modal-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1004;
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(255,215,0,0) 70%);
+    border-radius: 50%;
+    animation: particleFadeOut 1s forwards;
+    pointer-events: none;
+}
+
+@keyframes particleFadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}

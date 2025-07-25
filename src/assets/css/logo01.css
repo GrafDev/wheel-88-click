@@ -1,0 +1,129 @@
+/* Logo01 Container */
+.logo01-container {
+    position: absolute;
+    left: 50%;
+    top: -20%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+/* Base styles for logo01 */
+.logo01 {
+    position: relative;
+    width: calc(var(--wheel-section-size) * 0.6) !important;
+    z-index: 100;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
+}
+
+.letters-2 {
+    animation: logoShine 2s ease-in-out infinite;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+}
+
+/* Mobile devices in portrait orientation (narrow and short) */
+/* Hide desktop logo on mobile, show mobile logo */
+@media (max-width: 530px) {
+    .logo01-container {
+        display: none;
+    }
+    
+    .logo01-container-mobile {
+        display: block;
+        position: absolute;
+        width: calc(var(--wheel-section-size) * 0.45);
+        height: calc(var(--wheel-section-size) * 0.2);
+        top: -45%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 55;
+    }
+    
+    .logo01-container-mobile .logo01 {
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Hide mobile logo on desktop, show desktop logo */
+@media (min-width: 531px) {
+    .logo01-container-mobile {
+        display: none;
+    }
+}
+
+/* Tablets in portrait orientation (not so narrow) */
+@media (max-aspect-ratio: 1/1) and (min-width: 768px) {
+    .logo01 {
+        top: -40%;
+        width: 60%;
+    }
+}
+
+/* Large tablets and small laptops (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .logo01 {
+        top: -40%;
+        width: 60%;
+    }
+}
+
+/* Landscape orientation - Not narrow screens (width/height < 1.6) */
+@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/10) {
+    .logo01 {
+        left: 20%;
+        top: -10%;
+        width: calc(var(--wheel-section-size) * 0.4);
+        transform: translateX(-90%);
+    }
+}
+
+/* Landscape orientation - Narrow screens (width/height 1.6-1.9) */
+@media (min-aspect-ratio: 16/10) and (max-aspect-ratio: 19/10) {
+    .logo01 {
+        left: 20%;
+        top: -10%;
+        width: calc(var(--wheel-section-size) * 0.4);
+        transform: translateX(-80%);
+    }
+}
+
+/* Landscape orientation - Very narrow screens (width/height > 1.9) */
+@media (min-aspect-ratio: 19/10) {
+    .logo01 {
+        left: 10%;
+        top: -7%;
+        width: calc(var(--wheel-section-size) * 0.4);
+        transform: translateX(-80%);
+    }
+
+}
+
+/* Low screens in landscape orientation */
+@media (max-height: 375px) and (min-aspect-ratio: 1/1) {
+    .logo01 {
+        top: -7%;
+        transform: translateX(-90%);
+    }
+}
+
+/* Desktops with regular aspect ratio (any ratio but large width) */
+@media (min-width: 1200px) {
+    .logo01 {
+        top: -40%;
+        width: 60%;
+        transform: translateX(0%);
+    }
+}
+
+/* Desktops with wide aspect ratio (for widescreen monitors) */
+@media (min-width: 1200px) and (min-aspect-ratio: 16/9) {
+    .logo01 {
+        top: -45%;
+        width: calc(var(--wheel-section-size) * 0.6);
+        transform: translateX(-20%);
+    }
+}

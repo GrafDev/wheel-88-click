@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="favicon" content="public/favicon.ico">
+    <!-- Мета-теги для предотвращения кеширования -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!-- Meta tags for iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Wheel of Fortune</title>
+    <style>
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: #1a202c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        #preloader .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #4a5568;
+            border-top: 3px solid #ecc94b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-progress {
+            color: #ecc94b;
+            font-family: 'ZCOOL KuaiLe', sans-serif;
+            font-size: 24px;
+        }
+
+        .content-hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./src/assets/css/main.css">
+</head>
+<body>
+<div id="preloader">
+    <div class="spinner"></div>
+</div>
+
+<div id="app" class="container content-hidden">
+    <!-- Fire Sprite -->
+    <div class="fire-sprite-animation content-hidden"></div>
+    <!-- Language Selector -->
+    <div class="language-selector-container content-hidden">
+        <img src="./src/assets/images/globs.png" alt="globs" class="globs content-hidden">
+        <select id="language-selector" class="language-selector content-hidden">
+            <option value="en">EN</option>
+        </select>
+    </div>
+
+    <!-- Man Container -->
+    <div class="mans-container content-hidden">
+        <img src="./src/assets/images/man.png" alt="Man01" class="mans man-01 content-hidden">
+        <img src="./src/assets/images/man.png" alt="Man02" class="mans man-02 content-hidden">
+    </div>
+    <!-- Wheel Section -->
+    <div class="wheel-section content-hidden">
+        <!-- Logo 01 Container for mobile -->
+        <div class="logo01-container-mobile content-hidden">
+            <img src="./src/assets/images/logo01.png" alt="Logo 1" class="logo01 content-hidden">
+            <img src="./src/assets/images/logo01-00.png" alt="Logo 1 00" class="logo01 letters-o content-hidden">
+        </div>
+        <!-- Logo 01 Container for desktop -->
+        <div class="logo01-container content-hidden">
+            <img src="./src/assets/images/logo01.png" alt="Logo 1" class="logo01 content-hidden">
+            <img src="./src/assets/images/logo01-00.png" alt="Logo 1 00" class="logo01 letters-o content-hidden">
+        </div>
+        <!-- Counter -->
+        <div class="counter content-hidden">
+            <img src="./src/assets/images/counter.png" alt="Counter">
+            <div class="counter-text content-hidden"></div>
+        </div>
+        <!-- Logo 02 -->
+        <img src="./src/assets/images/logo02.png" alt="Logo 2" class="logo02 circle-center  content-hidden">
+        <img src="./src/assets/images/logo02_dragons.png" alt="Logo 2 dragons" class="logo02 dragons content-hidden">
+        <!-- Man 03 -->
+        <img src="./src/assets/images/man.png" alt="Man03" class="mans man-03 content-hidden">
+
+        <!-- Arrow -->
+        <img src="./src/assets/images/arrow.png" alt="Arrow" class="wheel-arrow content-hidden">
+        <!-- Wheel -->
+        <div class="wheel-container">
+            <img id="wheel-image" src="./src/assets/images/wheel.png" alt="Wheel" class="wheel-image">
+            <img id="wheel-text-image" src="./src/assets/images/text_wheel.png" alt="TextWheel" class="wheel-text-image">
+        </div>
+        <!-- Win Sprite -->
+        <div class="wheel-sprite-animation content-hidden"></div>
+        <!-- Win Text-->
+        <div class="win-text content-hidden"></div>
+        <!-- Win Sector -->
+        <img src="./src/assets/images/sector.png" alt="Win Sector" class="win-sector content-hidden">
+        <!-- Spin Button -->
+        <img src="./src/assets/images/button_spin.png" alt="Spin Button" id="spin-button"
+             class="spin-button-image content-hidden">
+    </div>
+
+</div>
+
+<script type="module" src="./src/assets/js/main.js"></script>
+</body>
+</html>

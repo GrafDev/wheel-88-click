@@ -1,0 +1,150 @@
+/* mans.css - Styles for characters on the sides of the wheel using aspect ratios */
+
+/* Container for both mans */
+.mans-container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -10 !important;
+    width: calc(var(--wheel-section-size) * 2) !important;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    perspective: 1000px;
+}
+
+/* General styles for characters */
+.mans {
+    width: calc(var(--wheel-section-size) * 0.8) !important;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+/* First character placement - left of wheel */
+.man-01 {
+    
+}
+
+/* Second character placement - right of wheel */
+.man-02 {
+    
+}
+
+
+/* Hover effect for characters */
+.mans:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.1);
+}
+
+/* Apply reflection and account for it on hover */
+.man-01:hover {
+    transform: translateY(-5px);
+}
+
+/* Account for transformation for man-03 on hover */
+.man-03:hover {
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* Prevent overlap with button */
+@media (max-height: 700px) {
+    .mans {
+        opacity: 0.85;
+    }
+}
+/* Hide mans in portrait orientation */
+@media (max-aspect-ratio: 1/1) {
+    .mans {
+        display: none !important;
+    }
+}
+
+/* Mobile phones - portrait orientation */
+@media   (min-aspect-ratio: 8/16){
+    .man-01, .man-02 {
+        display: block;
+        width: 40%;
+    }
+    .man-01 {
+        left:-15%;
+    }
+    .man-02 {
+        right:-15%;
+    }
+}
+
+/* Mobile phones - portrait orientation (very high aspect ratio) */
+@media (max-width: 530px) {
+    .man-01, .man-02 {
+        display: none;
+    }
+
+    .man-03 {
+        display: block;
+        width: 80%;
+        bottom: -160%;
+    }
+}
+
+/* Mobile - landscape orientation */
+@media (min-aspect-ratio: 16/9) and (max-width: 1000px) {
+    .mans {
+        width: 22%;
+        bottom: -17%;
+    }
+
+    .man-01 {
+        left: 15%;
+    }
+
+    .man-02 {
+        right: 15%;
+    }
+
+    .man-03 {
+        display: none;
+    }
+}
+
+/* Tablets */
+@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 16/9) and (min-width: 600px) {
+    .mans {
+        width: 23.3%;
+        bottom:0;
+    }
+
+    .man-01 {
+        left: 7%;
+    }
+
+    .man-02 {
+        right: 7%;
+    }
+
+    .man-03 {
+        display: none;
+    }
+}
+
+/* Desktop (wide screens) */
+@media (min-width: 1280px) and (min-aspect-ratio: 3/2) {
+    .mans {
+        width: 20%;
+        bottom: 0;
+    }
+
+    .man-01 {
+        left: 10%;
+    }
+
+    .man-02 {
+        right: 10%;
+    }
+
+    .man-03 {
+        display: none;
+    }
+}

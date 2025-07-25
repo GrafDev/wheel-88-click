@@ -1,0 +1,49 @@
+/* language.css - Styles for language selector */
+
+/* Language selector container */
+.language-selector-container {
+    position: fixed;
+    top: var(--spacing-md);
+    right: calc(var(--spacing-md) + 10px);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Globe styles */
+.globs {
+    z-index: 500;
+    width: var(--globs-size);
+}
+
+/* Language selector styles */
+.language-selector {
+    background: transparent;
+    border: none;
+    text-align: center;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 500;
+    font-size: calc(var(--globs-size) * 0.5);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.language-selector:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(231, 225, 225, 0.4);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.language-selector:focus {
+    outline: none;
+}
+
+.language-selector option {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+}

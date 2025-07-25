@@ -1,0 +1,149 @@
+{
+  "sprites": [
+    {
+      "fileName": "wl01.png",
+      "width": 496,
+      "height": 496,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fileName": "wl02.png",
+      "width": 496,
+      "height": 496,
+      "x": 496,
+      "y": 0
+    },
+    {
+      "fileName": "wl03.png",
+      "width": 496,
+      "height": 496,
+      "x": 992,
+      "y": 0
+    },
+    {
+      "fileName": "wl04.png",
+      "width": 496,
+      "height": 496,
+      "x": 1488,
+      "y": 0
+    },
+    {
+      "fileName": "wl05.png",
+      "width": 496,
+      "height": 496,
+      "x": 1984,
+      "y": 0
+    },
+    {
+      "fileName": "wl06.png",
+      "width": 496,
+      "height": 496,
+      "x": 0,
+      "y": 496
+    },
+    {
+      "fileName": "wl07.png",
+      "width": 496,
+      "height": 496,
+      "x": 496,
+      "y": 496
+    },
+    {
+      "fileName": "wl08.png",
+      "width": 496,
+      "height": 496,
+      "x": 992,
+      "y": 496
+    },
+    {
+      "fileName": "wl09.png",
+      "width": 496,
+      "height": 496,
+      "x": 1488,
+      "y": 496
+    },
+    {
+      "fileName": "wl10.png",
+      "width": 496,
+      "height": 496,
+      "x": 1984,
+      "y": 496
+    },
+    {
+      "fileName": "wl11.png",
+      "width": 496,
+      "height": 496,
+      "x": 0,
+      "y": 992
+    },
+    {
+      "fileName": "wl12.png",
+      "width": 496,
+      "height": 496,
+      "x": 496,
+      "y": 992
+    },
+    {
+      "fileName": "wl13.png",
+      "width": 496,
+      "height": 496,
+      "x": 992,
+      "y": 992
+    },
+    {
+      "fileName": "wl14.png",
+      "width": 496,
+      "height": 496,
+      "x": 1488,
+      "y": 992
+    },
+    {
+      "fileName": "wl15.png",
+      "width": 496,
+      "height": 496,
+      "x": 1984,
+      "y": 992
+    },
+    {
+      "fileName": "wl16.png",
+      "width": 496,
+      "height": 496,
+      "x": 0,
+      "y": 1488
+    },
+    {
+      "fileName": "wl17.png",
+      "width": 496,
+      "height": 496,
+      "x": 496,
+      "y": 1488
+    },
+    {
+      "fileName": "wl18.png",
+      "width": 496,
+      "height": 496,
+      "x": 992,
+      "y": 1488
+    },
+    {
+      "fileName": "wl19.png",
+      "width": 496,
+      "height": 496,
+      "x": 1488,
+      "y": 1488
+    },
+    {
+      "fileName": "wl20.png",
+      "width": 496,
+      "height": 496,
+      "x": 1984,
+      "y": 1488
+    }
+  ],
+  "packMode": "grid",
+  "padding": 0,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 2480,
+  "spriteSheetHeight": 1984
+}

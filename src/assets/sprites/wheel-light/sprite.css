@@ -1,0 +1,43 @@
+:root {
+    --sprite-columns: 5;
+    --sprite-rows: 4;
+    --sprite-offset-x: calc(-1 * var(--sprite-frame-size));
+    --sprite-offset-y: calc(-1 * var(--sprite-frame-size));
+}
+
+[class*="sprite-wl"] {
+    display: block;
+    width: var(--sprite-frame-size);
+    height: var(--sprite-frame-size);
+    background-image: url(sprite_light_sheet.png);
+    background-repeat: no-repeat;
+    background-size: calc(var(--sprite-frame-size) * 5) calc(var(--sprite-frame-size) * 4);
+}
+
+/* Первый ряд */
+.sprite-wl01 { background-position: 0 0; }
+.sprite-wl02 { background-position: var(--sprite-offset-x) 0; }
+.sprite-wl03 { background-position: calc(var(--sprite-offset-x) * 2) 0; }
+.sprite-wl04 { background-position: calc(var(--sprite-offset-x) * 3) 0; }
+.sprite-wl05 { background-position: calc(var(--sprite-offset-x) * 4) 0; }
+
+/* Второй ряд */
+.sprite-wl06 { background-position: 0 var(--sprite-offset-y); }
+.sprite-wl07 { background-position: var(--sprite-offset-x) var(--sprite-offset-y); }
+.sprite-wl08 { background-position: calc(var(--sprite-offset-x) * 2) var(--sprite-offset-y); }
+.sprite-wl09 { background-position: calc(var(--sprite-offset-x) * 3) var(--sprite-offset-y); }
+.sprite-wl10 { background-position: calc(var(--sprite-offset-x) * 4) var(--sprite-offset-y); }
+
+/* Третий ряд */
+.sprite-wl11 { background-position: 0 calc(var(--sprite-offset-y) * 2); }
+.sprite-wl12 { background-position: var(--sprite-offset-x) calc(var(--sprite-offset-y) * 2); }
+.sprite-wl13 { background-position: calc(var(--sprite-offset-x) * 2) calc(var(--sprite-offset-y) * 2); }
+.sprite-wl14 { background-position: calc(var(--sprite-offset-x) * 3) calc(var(--sprite-offset-y) * 2); }
+.sprite-wl15 { background-position: calc(var(--sprite-offset-x) * 4) calc(var(--sprite-offset-y) * 2); }
+
+/* Четвертый ряд */
+.sprite-wl16 { background-position: 0 calc(var(--sprite-offset-y) * 3); }
+.sprite-wl17 { background-position: var(--sprite-offset-x) calc(var(--sprite-offset-y) * 3); }
+.sprite-wl18 { background-position: calc(var(--sprite-offset-x) * 2) calc(var(--sprite-offset-y) * 3); }
+.sprite-wl19 { background-position: calc(var(--sprite-offset-x) * 3) calc(var(--sprite-offset-y) * 3); }
+.sprite-wl20 { background-position: calc(var(--sprite-offset-x) * 4) calc(var(--sprite-offset-y) * 3); }

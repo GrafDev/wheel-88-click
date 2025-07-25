@@ -1,0 +1,256 @@
+
+/* Universal background for all devices */
+body {
+    background-image: url('../images/bg_desktop.png');
+    min-height: 100dvh;
+}
+
+/* Basic adaptive styles for wheel section */
+.wheel-section {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--wheel-section-size);
+    height: var(--wheel-section-size);
+}
+
+/* Medium screens - reduce wheel size by 10% */
+@media (min-width: 461px) and (max-width: 800px) {
+    :root {
+        --wheel-section-size: calc(min(88dvw, 66dvh, 660px) * 0.9);
+    }
+}
+
+/* Large screens - increase wheel size */
+@media (min-width: 1200px) {
+    :root {
+        --wheel-section-size: min(70vw, 60vh, 800px);
+    }
+}
+
+/* Portrait orientation for very narrow screens */
+@media (max-width: 530px) {
+    .wheel-section {
+        top: 45%;
+    }
+}
+
+/* Spin button styles */
+.spin-button-image {
+    position: absolute;
+    left: 50%;
+    bottom: -25%;
+    width: calc(var(--wheel-section-size) * 0.45);
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Increase button size for narrow screens */
+@media (max-width: 530px) {
+    .spin-button-image {
+        width: calc(var(--wheel-section-size) * 0.54);
+        bottom: -25%;
+    }
+}
+
+/* Arrow styles */
+.wheel-arrow {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(var(--wheel-section-size) * 0.12);
+    z-index: 700;
+}
+
+/* Counter styles */
+.counter {
+    position: absolute;
+    top: -5%;
+    left: 65%;
+    width: calc(var(--wheel-section-size) * 0.4);
+    z-index: 7;
+}
+
+.counter-text {
+    position: absolute;
+    top: 43%;
+    left: 77%;
+    transform: translate(-50%, -50%);
+    font-size: calc(var(--wheel-section-size) * 0.06);
+    color: #dfdfdf;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+    z-index: 8;
+}
+
+/* Counter position adjustment for narrow screens */
+@media (max-width: 530px) {
+    .counter {
+        top: -20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(var(--wheel-section-size) * 0.45);
+        z-index: 7;
+    }
+
+    .counter-text {
+        font-size: calc(var(--wheel-section-size) * 0.08);
+    }
+}
+
+/* Logo styles */
+.logo01 {
+    position: absolute;
+    left: 25%;
+    top: -5%;
+    width: calc(var(--wheel-section-size) * 0.4);
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+/* Logo position adjustment for narrow screens */
+@media (max-width: 530px) {
+    .logo01 {
+        top: -50%;
+        width: calc(var(--wheel-section-size) * 0.55);
+    }
+}
+
+/* Modal button base styles */
+.modal-button {
+    font-size: calc(var(--wheel-section-size) * 0.04);
+}
+
+/* For narrow screens in landscape orientation */
+@media (min-aspect-ratio: 16/9) {
+    :root {
+        --wheel-section-size: min(80dvw, 70vh, 450px);
+    }
+
+    .wheel-section {
+        top: 45%;
+    }
+
+    .logo01 {
+        left: 15%;
+        top: -10%;
+    }
+
+    /* Spin button styles */
+    .spin-button-image {
+        left: 50%;
+        bottom: -20%;
+        width: calc(var(--wheel-section-size) * 0.54);
+        transform: translateX(-50%);
+        transition: transform 0.2s ease;
+    }
+}
+
+
+/* Special iOS landscape orientation styles */
+.ios-landscape .container {
+    height: calc(var(--ios-landscape-vh, 1vh) * 100);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
+/* Wheel styles for iOS landscape orientation */
+.ios-landscape {
+    --wheel-section-size: min(80dvw, 65vh, 450px);
+}
+
+/* Spin button styles for iOS landscape */
+.ios-landscape .spin-button-image {
+    bottom: -18%;
+    width: calc(var(--wheel-section-size) * 0.45);
+}
+
+/* Character styles for iOS landscape orientation */
+.ios-landscape .mans {
+    bottom: -10%;
+}
+
+.ios-landscape .man-01 {
+    left: 18%;
+}
+
+.ios-landscape .man-02 {
+    right: 18%;
+}
+
+/* Logo for iOS landscape orientation */
+.ios-landscape .logo01 {
+    top: -15%;
+    left: 20%;
+    width: calc(var(--wheel-section-size) * 0.35);
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.ios-landscape .logo01.letters-o {
+    top: -15%;
+    left: 20%;
+    width: calc(var(--wheel-section-size) * 0.35);
+}
+
+/* Logo02 adjustment for iOS landscape orientation */
+.ios-landscape .logo02 {
+    width: calc(var(--wheel-section-size) * 0.35);
+    z-index: 6;
+}
+
+/* Arrow and counter */
+.ios-landscape .wheel-arrow {
+    top: -3%;
+}
+
+.ios-landscape .counter {
+    top: -3%;
+}
+
+/* Apply fixed height for iOS minimum height */
+@media (max-height: 375px) {
+    .ios-landscape {
+        --wheel-section-size: min(80dvw, 60vh, 450px);
+    }
+
+    .ios-landscape .mans {
+        bottom: -15%;
+        width: 18%;
+    }
+
+    .ios-landscape .logo01,
+    .ios-landscape .logo01.letters-o {
+        top: -12%;
+        width: calc(var(--wheel-section-size) * 0.3);
+    }
+
+    .ios-landscape .logo02 {
+        width: calc(var(--wheel-section-size) * 0.3);
+    }
+}
+
+/* Apply proper meta-tags for safe area support */
+@supports (padding-top: env(safe-area-inset-top)) {
+    .ios-landscape .container {
+        --safe-area-inset-top: env(safe-area-inset-top);
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        --safe-area-inset-left: env(safe-area-inset-left);
+        --safe-area-inset-right: env(safe-area-inset-right);
+    }
+}
+
+/* Additional correction for wide screens */
+@media (min-aspect-ratio: 18/9) {
+    .ios-landscape .logo01,
+    .ios-landscape .logo01.letters-o {
+        left: 20%;
+    }
+}

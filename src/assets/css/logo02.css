@@ -1,0 +1,21 @@
+/* logo02.css - Fixed styles for logo02 */
+
+/* Styles for logo02 - fixed version */
+.logo02 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 5px rgba(249, 220, 4, 0.7)) drop-shadow(0 0 10px rgba(251, 178, 8, 0.58)) brightness(1.2);
+    z-index: 45;
+}
+
+.circle-center {
+    z-index: 50;
+    isolation: isolate;
+}
+
+.dragons {
+    z-index: 46;
+}
