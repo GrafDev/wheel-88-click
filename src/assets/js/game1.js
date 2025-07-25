@@ -89,6 +89,7 @@ export class Game1 {
             this.spinButton.addEventListener('click', () => {
                 if (!gameState.buttonBlocked) {
                     this.hideWinText();
+                    this.handleSpin();
                 }
             });
 
@@ -136,6 +137,23 @@ export class Game1 {
                 }
             });
         }
+
+        // Click anywhere on screen to spin
+        document.addEventListener('click', (e) => {
+            if (!gameState.buttonBlocked && e.target !== this.spinButton && !e.target.closest('.modal-overlay')) {
+                this.animateButton();
+                this.handleSpin();
+            }
+        });
+
+        // Keyboard events for spacebar and enter
+        document.addEventListener('keydown', (e) => {
+            if (!gameState.buttonBlocked && (e.code === 'Space' || e.code === 'Enter')) {
+                e.preventDefault();
+                this.animateButton();
+                this.handleSpin();
+            }
+        });
     }
 
     initializeWheel() {
@@ -149,6 +167,25 @@ export class Game1 {
             const remainingSpins = 2 - gameState.spinCount;
             this.counterTextElement.textContent = remainingSpins > 0 ? remainingSpins : 0;
         }
+    }
+
+    animateButton() {
+        if (this.spinButton && !gameState.buttonBlocked) {
+            this.spinButton.style.transform = 'translateX(-50%) scale(0.95)';
+            this.spinButton.style.filter = 'drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2))';
+            
+            setTimeout(() => {
+                if (!gameState.isSpinning) {
+                    this.spinButton.style.transform = 'translateX(-50%)';
+                    this.spinButton.style.filter = 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3))';
+                }
+            }, 150);
+        }
+    }
+
+    handleSpin() {
+        this.hideWinText();
+        this.spin();
     }
 
     spin() {
