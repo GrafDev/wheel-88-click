@@ -140,7 +140,10 @@ export class Game1 {
 
         // Click anywhere on screen to spin
         document.addEventListener('click', (e) => {
-            if (!gameState.buttonBlocked && e.target !== this.spinButton && !e.target.closest('.modal-overlay')) {
+            if (!gameState.buttonBlocked && 
+                e.target !== this.spinButton && 
+                !e.target.closest('.modal-overlay') && 
+                !e.target.closest('.language-selector-container')) {
                 this.animateButton();
                 this.handleSpin();
             }

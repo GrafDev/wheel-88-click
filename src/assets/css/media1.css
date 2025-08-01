@@ -110,5 +110,7 @@ body {
     .spin-button-image {
         width: calc(var(--wheel-section-size) * 0.54);
         bottom: -25%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
