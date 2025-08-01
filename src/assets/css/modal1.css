@@ -216,28 +216,58 @@
     }
 }
 
-/* Full HD screens (1920x1080) - increase modal by 15% */
-@media (min-width: 1920px) and (min-height: 1080px) {
+/* Large desktop screens (1400px+) - increase modal by 10% */
+@media (min-width: 1400px) and (min-height: 900px) {
     .modal-content {
-        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.15);
-        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.15);
-        max-width: calc(550px * 1.15);
+        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.1);
+        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.1);
+        max-width: min(calc(550px * 1.1), 80vw);
+        max-height: 85vh;
     }
     
     .modal-button {
-        font-size: calc(var(--wheel-section-size) * 0.04 * 1.15);
+        font-size: calc(var(--wheel-section-size) * 0.055 * 1.1);
     }
 }
 
-/* 4K screens (2391px and higher) - increase modal by 5% */
-@media (min-width: 2391px) {
+/* Full HD screens (1920x1080) - increase modal by 25% */
+@media (min-width: 1920px) and (min-height: 1080px) {
     .modal-content {
-        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.05);
-        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.05);
-        max-width: calc(550px * 1.05);
+        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.25);
+        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.25);
+        max-width: min(calc(550px * 1.25), 75vw);
+        max-height: 80vh;
     }
     
     .modal-button {
-        font-size: calc(var(--wheel-section-size) * 0.04 * 1.05);
+        font-size: calc(var(--wheel-section-size) * 0.05 * 1.25);
+    }
+}
+
+/* 2K screens (2560x1440) - increase modal by 35% */
+@media (min-width: 2560px) and (min-height: 1440px) {
+    .modal-content {
+        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.35);
+        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.35);
+        max-width: min(calc(550px * 1.35), 70vw);
+        max-height: 75vh;
+    }
+    
+    .modal-button {
+        font-size: calc(var(--wheel-section-size) * 0.045 * 1.35);
+    }
+}
+
+/* 4K screens (3840x2160) - increase modal by 50% */
+@media (min-width: 3840px) and (min-height: 2160px) {
+    .modal-content {
+        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.5);
+        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.5);
+        max-width: min(calc(550px * 1.5), 65vw);
+        max-height: 70vh;
+    }
+    
+    .modal-button {
+        font-size: calc(var(--wheel-section-size) * 0.04 * 1.5);
     }
 }

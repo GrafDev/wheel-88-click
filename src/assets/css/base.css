@@ -8,7 +8,7 @@ html {
     touch-action: manipulation !important;
     -ms-touch-action: manipulation !important;
     zoom: 1 !important;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 body {
@@ -30,7 +30,7 @@ body {
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .container {
