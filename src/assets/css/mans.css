@@ -1,4 +1,4 @@
-/* mans.css - Styles for characters on the sides of the wheel using aspect ratios */
+/* SIMPLE MANS SYSTEM - BASED ON WHEEL SIZE */
 
 /* Container for both mans */
 .mans-container {
@@ -17,134 +17,74 @@
 
 /* General styles for characters */
 .mans {
-    width: calc(var(--wheel-section-size) * 0.8) !important;
     transition: all 0.3s ease;
     transform-style: preserve-3d;
 }
 
-/* First character placement - left of wheel */
+/* Left character */
 .man-01 {
-    
+    transform: scaleX(-1);
+    opacity: 0;
+    transform-origin: center bottom;
+    animation: man01-flip 0.5s ease-out 0.8s forwards;
 }
 
-/* Second character placement - right of wheel */
+@keyframes man01-flip {
+    from {
+        opacity: 0;
+        transform: scaleX(-1) rotateX(90deg);
+    }
+    to {
+        opacity: 1;
+        transform: scaleX(-1) rotateX(0deg);
+    }
+}
+
+/* Right character */
 .man-02 {
-    
+    opacity: 0;
+    transform-origin: center bottom;
+    animation: man02-flip 0.5s ease-out 1s forwards;
 }
 
+@keyframes man02-flip {
+    from {
+        opacity: 0;
+        transform: rotateX(90deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
 
-/* Hover effect for characters */
+/* Hover effects - don't interfere with GSAP transforms */
 .mans:hover {
-    transform: translateY(-5px);
     filter: brightness(1.1);
 }
 
-/* Apply reflection and account for it on hover */
-.man-01:hover {
-    transform: translateY(-5px);
-}
+/* RESPONSIVE SYSTEM */
 
-/* Account for transformation for man-03 on hover */
-.man-03:hover {
-    transform: translateX(-50%) translateY(-5px);
-}
-
-/* Prevent overlap with button */
-@media (max-height: 700px) {
-    .mans {
-        opacity: 0.85;
+/* Landscape mode - show side mans */
+@media (min-aspect-ratio: 1/1) {
+    .man-01, .man-02 {
+        display: block !important;
+        width: calc(var(--wheel-section-size) * 0.6) !important;
+        bottom: -3% !important;
+    }
+    
+    .man-01 {
+        left: 1%;
+    }
+    
+    .man-02 {
+        right: 1%;
     }
 }
-/* Hide mans in portrait orientation */
+
+/* Portrait mode - hide all mans (no man-03 anymore) */
 @media (max-aspect-ratio: 1/1) {
-    .mans {
+    .man-01, .man-02 {
         display: none !important;
-    }
-}
-
-/* Mobile phones - portrait orientation */
-@media   (min-aspect-ratio: 8/16){
-    .man-01, .man-02 {
-        display: block;
-        width: 40%;
-    }
-    .man-01 {
-        left:-15%;
-    }
-    .man-02 {
-        right:-15%;
-    }
-}
-
-/* Mobile phones - portrait orientation (very high aspect ratio) */
-@media (max-width: 530px) {
-    .man-01, .man-02 {
-        display: none;
-    }
-
-    .man-03 {
-        display: block;
-        width: 80%;
-        bottom: -160%;
-    }
-}
-
-/* Mobile - landscape orientation */
-@media (min-aspect-ratio: 16/9) and (max-width: 1000px) {
-    .mans {
-        width: 22%;
-        bottom: -17%;
-    }
-
-    .man-01 {
-        left: 15%;
-    }
-
-    .man-02 {
-        right: 15%;
-    }
-
-    .man-03 {
-        display: none;
-    }
-}
-
-/* Tablets */
-@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 16/9) and (min-width: 600px) {
-    .mans {
-        width: 23.3%;
-        bottom:0;
-    }
-
-    .man-01 {
-        left: 7%;
-    }
-
-    .man-02 {
-        right: 7%;
-    }
-
-    .man-03 {
-        display: none;
-    }
-}
-
-/* Desktop (wide screens) */
-@media (min-width: 1280px) and (min-aspect-ratio: 3/2) {
-    .mans {
-        width: 20%;
-        bottom: 0;
-    }
-
-    .man-01 {
-        left: 10%;
-    }
-
-    .man-02 {
-        right: 10%;
-    }
-
-    .man-03 {
-        display: none;
     }
 }

@@ -19,3 +19,17 @@
 .dragons {
     z-index: 46;
 }
+
+/* Full HD screens (1920x1080) - increase logo02 by 15% */
+@media (min-width: 1920px) and (min-height: 1080px) {
+    .logo02 {
+        width: calc(20% * 1.15);
+    }
+}
+
+/* 4K screens (2391px and higher) - increase logo02 by 5% */
+@media (min-width: 2391px) {
+    .logo02 {
+        width: calc(20% * 1.05);
+    }
+}

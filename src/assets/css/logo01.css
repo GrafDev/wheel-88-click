@@ -127,3 +127,27 @@
         transform: translateX(-20%);
     }
 }
+
+/* Full HD screens (1920x1080) - increase logo01 by 15% */
+@media (min-width: 1920px) and (min-height: 1080px) {
+    .logo01 {
+        width: calc(var(--wheel-section-size) * 0.6 * 1.15) !important;
+    }
+    
+    .logo01-container-mobile {
+        width: calc(var(--wheel-section-size) * 0.45 * 1.15);
+        height: calc(var(--wheel-section-size) * 0.2 * 1.15);
+    }
+}
+
+/* 4K screens (2391px and higher) - increase logo01 by 5% */
+@media (min-width: 2391px) {
+    .logo01 {
+        width: calc(var(--wheel-section-size) * 0.6 * 1.05) !important;
+    }
+    
+    .logo01-container-mobile {
+        width: calc(var(--wheel-section-size) * 0.45 * 1.05);
+        height: calc(var(--wheel-section-size) * 0.2 * 1.05);
+    }
+}

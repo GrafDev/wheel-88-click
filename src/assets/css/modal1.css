@@ -172,7 +172,7 @@
 /* Mobile modal size adjustments */
 @media (max-width: 530px) {
     .modal-content {
-        width: min(calc(var(--wheel-section-size) * 1.1), 450px);
+        width: min(calc(var(--wheel-section-size) * 1.05), 450px);
         min-width: min(calc(var(--wheel-section-size) * 0.9), 300px);
         max-width: 450px;
     }
@@ -213,5 +213,31 @@
     100% {
         opacity: 0;
         transform: scale(0);
+    }
+}
+
+/* Full HD screens (1920x1080) - increase modal by 15% */
+@media (min-width: 1920px) and (min-height: 1080px) {
+    .modal-content {
+        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.15);
+        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.15);
+        max-width: calc(550px * 1.15);
+    }
+    
+    .modal-button {
+        font-size: calc(var(--wheel-section-size) * 0.04 * 1.15);
+    }
+}
+
+/* 4K screens (2391px and higher) - increase modal by 5% */
+@media (min-width: 2391px) {
+    .modal-content {
+        width: calc(min(calc(var(--wheel-section-size) * 1.6), 550px) * 1.05);
+        min-width: calc(min(calc(var(--wheel-section-size) * 1.2), 400px) * 1.05);
+        max-width: calc(550px * 1.05);
+    }
+    
+    .modal-button {
+        font-size: calc(var(--wheel-section-size) * 0.04 * 1.05);
     }
 }

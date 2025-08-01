@@ -33,58 +33,9 @@ export class Animations1 {
     static initializeMans() {
         const man01 = document.querySelector('.man-01');
         const man02 = document.querySelector('.man-02');
-        const man03 = document.querySelector('.man-03');
 
         if (!man01 || !man02) return;
 
-        // Set initial 3D rotation state
-        gsap.set(man01, {
-            opacity: 0,
-            rotationX: 90,
-            transformOrigin: "center bottom"
-        });
-
-        gsap.set(man02, {
-            opacity: 0,
-            rotationX: 90,
-            transformOrigin: "center bottom"
-        });
-
-        if (man03) {
-            gsap.set(man03, {
-                opacity: 0,
-                rotationX: 90,
-                transformOrigin: "center bottom"
-            });
-        }
-
-        // 3D card lifting animation for man01
-        const tl1 = gsap.timeline({ delay: 0.8 });
-        tl1.to(man01, { 
-            opacity: 1, 
-            rotationX: 0, 
-            duration: 0.5, 
-            ease: "power2.out" 
-        });
-
-        // 3D card lifting animation for man02
-        const tl2 = gsap.timeline({ delay: 1 });
-        tl2.to(man02, { 
-            opacity: 1, 
-            rotationX: 0, 
-            duration: 0.5, 
-            ease: "power2.out" 
-        });
-
-        if (man03) {
-            const tl3 = gsap.timeline({ delay: 1.2 });
-            tl3.to(man03, { 
-                opacity: 1, 
-                rotationX: 0, 
-                duration: 0.5, 
-                ease: "power2.out" 
-            });
-        }
     }
 
     static initializePageElements() {
@@ -376,6 +327,7 @@ export class Animations1 {
                     settleDuration
                 );
             }
+
 
             if (arrowElement && spinCount > 0) {
                 arrowAnimation = ArrowAnimations.arrowClickAnimation(arrowElement, element, spinCount);
