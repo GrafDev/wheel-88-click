@@ -33,17 +33,6 @@ export class Game1 {
     }
 
     createModal() {
-        if (!document.querySelector('.modal-overlay')) {
-            const modalHTML = `
-               <div class="modal-overlay">
-                   <div class="modal-content">
-                       <div class="modal-win-amount"></div>
-                       <a href="{offer_link}" target="_blank" class="modal-button"></a>
-                   </div>
-               </div>
-           `;
-            document.body.insertAdjacentHTML('beforeend', modalHTML);
-        }
         this.modal = document.querySelector('.modal-overlay');
     }
 
