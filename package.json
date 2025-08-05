@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "build:button": "vite build --mode button",
+    "build:auto": "vite build --mode auto",
+    "build:all": "npm run build:button && npm run build:auto",
+    "preview": "vite preview",
+    "deploy:button": "npm run build:button && firebase deploy --only hosting:wheel-88-button",
+    "deploy:auto": "npm run build:auto && firebase deploy --only hosting:wheel-88-auto",
+    "deploy:all": "npm run build:all && firebase deploy"
   },
   "devDependencies": {
     "vite": "^6.0.11"
