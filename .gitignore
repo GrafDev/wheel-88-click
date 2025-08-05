@@ -7,14 +7,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Environment
-.env
+# Environment (Private files with sensitive data)
+.env.private
+
+# Firebase hosting cache
+.firebase/
 
 # Dependencies
 node_modules
 
 # Build
 dist
+dist-button
+dist-auto  
+dist-button-canada
+dist-auto-canada
 dist-ssr
 *.local
 

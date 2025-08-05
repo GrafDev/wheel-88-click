@@ -6,6 +6,7 @@ import { Animations1 } from './animations1.js';
 import { DragonAnimations } from './dragon-animations.js';
 import { FireSpriteManager } from './fire-sprite-manager.js';
 import { initializeApp } from 'firebase/app';
+import { gameConfig } from './config.js';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -151,6 +152,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener('resize', setIOSLandscapeVh);
     window.addEventListener('orientationchange', setIOSLandscapeVh);
 
+    const gameMode = import.meta.env.VITE_GAME_MODE || 'button';
+    const country = import.meta.env.VITE_COUNTRY || 'standard';
+    const config = gameConfig[country][gameMode];
+    
     const images = [
         new URL('/src/assets/images/logo01.png', import.meta.url).href,
         new URL('/src/assets/images/logo01-00.png', import.meta.url).href,
@@ -158,6 +163,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         new URL('/src/assets/images/logo02_dragons.png', import.meta.url).href,
         new URL('/src/assets/images/arrow.png', import.meta.url).href,
         new URL('/src/assets/images/wheel.png', import.meta.url).href,
+        new URL(`/src/assets/images/${config.wheelText}`, import.meta.url).href,
         new URL('/src/assets/images/button_spin.png', import.meta.url).href,
         new URL('/src/assets/images/button_spin_hover.png', import.meta.url).href,
         new URL('/src/assets/images/sector.png', import.meta.url).href,
@@ -207,10 +213,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
 
-        const gameMode = import.meta.env.VITE_GAME_MODE || 'button';
-        
         // Add game mode class to body for CSS targeting
         document.body.classList.add(`game-mode-${gameMode}`);
+        
+        // Set wheel text image from config
+        const wheelTextImage = document.getElementById('wheel-text-image');
+        if (wheelTextImage && config.wheelText) {
+            wheelTextImage.src = `./src/assets/images/${config.wheelText}`;
+        }
         
         const counterTextElement = document.querySelector('.counter-text');
         if (counterTextElement) {
@@ -230,7 +240,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (gameMode === 'auto') {
             setTimeout(() => {
                 game1.spin();
-            }, 1800);
+            }, config.autoSpinDelay);
         }
 
         spinButton?.addEventListener('click', () => game1.spin());

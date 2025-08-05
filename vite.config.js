@@ -1,7 +1,36 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import { VERSION } from './version.js'
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }) => {
+    // Load env files - public and private
+    const publicEnv = loadEnv('public', process.cwd(), '')
+    const privateEnv = loadEnv('private', process.cwd(), '')
+    
+    // Parse mode to extract country and game mode
+    let gameMode = 'button'
+    let country = 'standard'
+    
+    if (mode && mode !== 'development') {
+        const parts = mode.split('-')
+        if (parts.length === 1) {
+            // Just mode: 'button' or 'auto'
+            gameMode = parts[0]
+        } else if (parts.length === 2) {
+            // mode-country: 'button-canada' or 'auto-canada'
+            gameMode = parts[0]
+            country = parts[1]
+        }
+    }
+    
+    const currentSettings = {
+        VITE_GAME_MODE: gameMode,
+        VITE_COUNTRY: country
+    }
+    
+    // Merge environments with mode-specific overrides
+    const mergedEnv = { ...publicEnv, ...privateEnv, ...currentSettings }
+    
+    return {
     server: {
         open: true,
         port: 5173
@@ -16,7 +45,10 @@ export default defineConfig(({ mode }) => ({
         }
     },
     build: {
-        outDir: mode === 'auto' ? 'dist-auto' : mode === 'button' ? 'dist-button' : 'dist',
+        outDir: mode === 'auto' ? 'dist-auto' : 
+                mode === 'button' ? 'dist-button' : 
+                mode === 'auto-canada' ? 'dist-auto-canada' : 
+                mode === 'button-canada' ? 'dist-button-canada' : 'dist',
         assetsDir: 'assets',
         cssCodeSplit: true,
         cssMinify: true,
@@ -41,6 +73,13 @@ export default defineConfig(({ mode }) => ({
         devSourcemap: true
     },
     define: {
-        __APP_VERSION__: JSON.stringify(VERSION)
+        __APP_VERSION__: JSON.stringify(VERSION),
+        // Expose merged env variables to the client
+        ...Object.keys(mergedEnv).reduce((prev, key) => {
+            if (key.startsWith('VITE_')) {
+                prev[`import.meta.env.${key}`] = JSON.stringify(mergedEnv[key])
+            }
+            return prev
+        }, {})
     }
-}))
+}})

@@ -4,6 +4,7 @@ import {Animations1} from './animations1.js';
 import {SpriteManager} from './sprite-manager.js';
 import {FireSpriteManager} from './fire-sprite-manager.js';
 import {DragonAnimations} from './dragon-animations.js';
+import {gameConfig} from './config.js';
 
 import buttonSpin from '../images/button_spin.png';
 import buttonSpinHover from '../images/button_spin_hover.png';
@@ -11,6 +12,8 @@ import buttonSpinHover from '../images/button_spin_hover.png';
 export class Game1 {
     constructor() {
         this.gameMode = import.meta.env.VITE_GAME_MODE || 'button';
+        this.country = import.meta.env.VITE_COUNTRY || 'standard';
+        this.config = gameConfig[this.country][this.gameMode];
         this.wheelElement = document.querySelector('.wheel-image');
         this.spinButton = document.getElementById('spin-button');
         this.defaultButtonSrc = buttonSpin;
@@ -229,7 +232,7 @@ export class Game1 {
 
             if (this.gameMode === 'auto') {
                 if (gameState.spinCount === 1) {
-                    this.showWinText('<span class="big-text">1500$</span>\n<span class="plus-text">+</span>\n<span class="small-text">100FS</span>');
+                    this.showWinText(this.config.spins.first.winText);
                     setTimeout(() => {
                         this.spriteManager.stop();
                         Animations1.showModal(this.modal);
@@ -237,14 +240,14 @@ export class Game1 {
                 }
             } else {
                 if (gameState.spinCount === 1) {
-                    this.showWinText('100FS');
+                    this.showWinText(this.config.spins.first.winText);
                     setTimeout(() => {
                         gameState.buttonBlocked = false;
                         this.spinButton.src = this.defaultButtonSrc;
                         this.startButtonShake();
                     }, 1000);
                 } else if (gameState.spinCount === 2) {
-                    this.showWinText('300%');
+                    this.showWinText(this.config.spins.second.winText);
                     setTimeout(() => {
                         this.spriteManager.stop();
                         Animations1.showModal(this.modal);
