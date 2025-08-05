@@ -207,9 +207,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
 
+        const gameMode = import.meta.env.VITE_GAME_MODE || 'button';
+        
+        // Add game mode class to body for CSS targeting
+        document.body.classList.add(`game-mode-${gameMode}`);
+        
         const counterTextElement = document.querySelector('.counter-text');
         if (counterTextElement) {
-            counterTextElement.textContent = '2';
+            counterTextElement.textContent = gameMode === 'auto' ? '1' : '2';
             counterTextElement.classList.remove('content-hidden');
         }
 
@@ -221,6 +226,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const spinButton = document.getElementById('spin-button');
         const languageSelector = document.getElementById('language-selector');
+
+        if (gameMode === 'auto') {
+            setTimeout(() => {
+                game1.spin();
+            }, 1800);
+        }
 
         spinButton?.addEventListener('click', () => game1.spin());
         languageSelector?.addEventListener('change', (e) => {

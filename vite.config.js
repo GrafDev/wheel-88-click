@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import { VERSION } from './version.js'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
     server: {
         open: true,
         port: 5173
@@ -16,7 +16,7 @@ export default defineConfig({
         }
     },
     build: {
-        outDir: 'dist',
+        outDir: mode === 'auto' ? 'dist-auto' : mode === 'button' ? 'dist-button' : 'dist',
         assetsDir: 'assets',
         cssCodeSplit: true,
         cssMinify: true,
@@ -43,4 +43,4 @@ export default defineConfig({
     define: {
         __APP_VERSION__: JSON.stringify(VERSION)
     }
-})
+}))

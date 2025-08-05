@@ -10,6 +10,7 @@ import buttonSpinHover from '../images/button_spin_hover.png';
 
 export class Game1 {
     constructor() {
+        this.gameMode = import.meta.env.VITE_GAME_MODE || 'button';
         this.wheelElement = document.querySelector('.wheel-image');
         this.spinButton = document.getElementById('spin-button');
         this.defaultButtonSrc = buttonSpin;
@@ -38,7 +39,7 @@ export class Game1 {
 
     showWinText(text) {
         if (this.winTextElement) {
-            this.winTextElement.textContent = text;
+            this.winTextElement.innerHTML = text;
             this.winTextElement.classList.add('active');
         }
         if (this.winSectorElement) {
@@ -156,7 +157,8 @@ export class Game1 {
 
     updateCounterText() {
         if (this.counterTextElement) {
-            const remainingSpins = 2 - gameState.spinCount;
+            const maxSpins = this.gameMode === 'auto' ? 1 : 2;
+            const remainingSpins = maxSpins - gameState.spinCount;
             this.counterTextElement.textContent = remainingSpins > 0 ? remainingSpins : 0;
         }
     }
@@ -200,7 +202,9 @@ export class Game1 {
         }
 
         const currentRotation = gsap.getProperty(this.wheelElement, "rotation") || 0;
-        const spinPromise = Animations1.wheelSpin(this.wheelElement, currentRotation, gameState.spinCount);
+        // In auto mode, use spin config for second spin (spinCount 2) even on first spin
+        const effectiveSpinCount = this.gameMode === 'auto' ? 2 : gameState.spinCount;
+        const spinPromise = Animations1.wheelSpin(this.wheelElement, currentRotation, effectiveSpinCount);
 
         let spinHandled = false;
 
@@ -210,7 +214,8 @@ export class Game1 {
 
             gameState.isSpinning = false;
 
-            if (gameState.spinCount === 2) {
+            const maxSpins = this.gameMode === 'auto' ? 1 : 2;
+            if (gameState.spinCount === maxSpins) {
                 gameState.buttonBlocked = true;
             }
 
@@ -222,19 +227,29 @@ export class Game1 {
                 DragonAnimations.startDragonsPulsation(dragonsElement);
             }
 
-            if (gameState.spinCount === 1) {
-                this.showWinText('100FS');
-                setTimeout(() => {
-                    gameState.buttonBlocked = false;
-                    this.spinButton.src = this.defaultButtonSrc;
-                    this.startButtonShake();
-                }, 1000);
-            } else if (gameState.spinCount === 2) {
-                this.showWinText('300%');
-                setTimeout(() => {
-                    this.spriteManager.stop();
-                    Animations1.showModal(this.modal);
-                }, 1500);
+            if (this.gameMode === 'auto') {
+                if (gameState.spinCount === 1) {
+                    this.showWinText('<span class="big-text">1500$</span>\n<span class="plus-text">+</span>\n<span class="small-text">100FS</span>');
+                    setTimeout(() => {
+                        this.spriteManager.stop();
+                        Animations1.showModal(this.modal);
+                    }, 1500);
+                }
+            } else {
+                if (gameState.spinCount === 1) {
+                    this.showWinText('100FS');
+                    setTimeout(() => {
+                        gameState.buttonBlocked = false;
+                        this.spinButton.src = this.defaultButtonSrc;
+                        this.startButtonShake();
+                    }, 1000);
+                } else if (gameState.spinCount === 2) {
+                    this.showWinText('300%');
+                    setTimeout(() => {
+                        this.spriteManager.stop();
+                        Animations1.showModal(this.modal);
+                    }, 1500);
+                }
             }
         });
 

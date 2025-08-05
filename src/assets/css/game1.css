@@ -1,5 +1,5 @@
 :root {
-    --win-text-size: calc(var(--wheel-section-size) * 0.08);
+    --win-text-size: calc(var(--wheel-section-size) * 0.06);
 }
 
 .wheel-section {
@@ -112,7 +112,7 @@
 
 .win-text {
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: var(--win-text-size);
@@ -127,6 +127,24 @@
     z-index: 60;
     opacity: 0;
     visibility: hidden;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.game-mode-button .win-text {
+    top: 15%;
+}
+
+.win-text .big-text {
+    font-size: 1em;
+}
+
+.win-text .plus-text {
+    font-size: 1em;
+}
+
+.win-text .small-text {
+    font-size: 0.7em;
 }
 
 .win-text.active {
@@ -191,4 +209,9 @@
 
 .glow {
     animation: glowEffect 1.5s infinite alternate;
+}
+
+/* Auto mode: hide spin button */
+.game-mode-auto .spin-button-image {
+    display: none !important;
 }

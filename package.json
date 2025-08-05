@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:button": "vite --mode button",
+    "dev:auto": "vite --mode auto",
     "build": "vite build",
     "build:button": "vite build --mode button",
     "build:auto": "vite build --mode auto",

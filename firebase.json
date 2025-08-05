@@ -2,7 +2,7 @@
   "hosting": [
     {
       "site": "wheel-88-button",
-      "public": "dist",
+      "public": "dist-button",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -17,7 +17,7 @@
     },
     {
       "site": "wheel-88-auto",
-      "public": "dist",
+      "public": "dist-auto",
       "ignore": [
         "firebase.json",
         "**/.*",
