@@ -9,7 +9,8 @@ export const gameConfig = {
                     winText: "300%"
                 }
             },
-            wheelText: "text_wheel.png"
+            wheelText: "text_wheel.png",
+            modalBg: "modal_bg.png"
         },
         
         auto: {
@@ -19,6 +20,7 @@ export const gameConfig = {
                 }
             },
             wheelText: "text_wheel.png",
+            modalBg: "modal_bg.png",
             autoSpinDelay: 1800 // milliseconds
         }
     },
@@ -27,22 +29,24 @@ export const gameConfig = {
         button: {
             spins: {
                 first: {
-                    winText: "50FS"
+                    winText: "150FS"
                 },
                 second: {
-                    winText: "200%"
+                    winText: "2250CA$"
                 }
             },
-            wheelText: "text_wheel.png"
+            wheelText: "text_wheel-canada.png",
+            modalBg: "modal_bg-canada-button.png"
         },
         
         auto: {
             spins: {
                 first: {
-                    winText: '<span class="big-text">1000$</span>\n<span class="plus-text">+</span>\n<span class="small-text">50FS</span>'
+                    winText: '<span class="big-text">2250CA$</span>\n<span class="plus-text">.</span>'
                 }
             },
-            wheelText: "text_wheel.png",
+            wheelText: "text_wheel-canada.png",
+            modalBg: "modal_bg-canada-auto.png",
             autoSpinDelay: 2000 // milliseconds
         }
     },

@@ -2,7 +2,7 @@
   "hosting": [
     {
       "site": "wheel-88-button",
-      "public": "dist-button",
+      "public": "dist/wheel-88-button",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -17,7 +17,37 @@
     },
     {
       "site": "wheel-88-auto",
-      "public": "dist-auto",
+      "public": "dist/wheel-88-auto",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "site": "wheel-88-button-canada",
+      "public": "dist/wheel-88-button-canada",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "site": "wheel-88-auto-canada",
+      "public": "dist/wheel-88-auto-canada",
       "ignore": [
         "firebase.json",
         "**/.*",

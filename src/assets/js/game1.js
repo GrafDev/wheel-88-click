@@ -5,15 +5,26 @@ import {SpriteManager} from './sprite-manager.js';
 import {FireSpriteManager} from './fire-sprite-manager.js';
 import {DragonAnimations} from './dragon-animations.js';
 import {gameConfig} from './config.js';
+import {getImagePath} from './images.js';
 
 import buttonSpin from '../images/button_spin.png';
 import buttonSpinHover from '../images/button_spin_hover.png';
 
 export class Game1 {
     constructor() {
-        this.gameMode = import.meta.env.VITE_GAME_MODE || 'button';
-        this.country = import.meta.env.VITE_COUNTRY || 'standard';
+        // Get settings from URL params or env variables (same as in main.js)
+        const urlSettings = this.getSettingsFromURL();
+        this.gameMode = urlSettings.mode;
+        this.country = urlSettings.country;
         this.config = gameConfig[this.country][this.gameMode];
+        
+        // Debug logging to verify configuration
+        console.log('Game1 configuration:', {
+            gameMode: this.gameMode,
+            country: this.country,
+            config: this.config,
+            winTexts: this.config?.spins
+        });
         this.wheelElement = document.querySelector('.wheel-image');
         this.spinButton = document.getElementById('spin-button');
         this.defaultButtonSrc = buttonSpin;
@@ -38,6 +49,12 @@ export class Game1 {
 
     createModal() {
         this.modal = document.querySelector('.modal-overlay');
+        
+        // Set modal background based on config
+        const modalContent = this.modal?.querySelector('.modal-content');
+        if (modalContent && this.config.modalBg) {
+            modalContent.style.backgroundImage = `url('${getImagePath(this.config.modalBg)}')`;
+        }
     }
 
     showWinText(text) {
@@ -231,7 +248,8 @@ export class Game1 {
             }
 
             if (this.gameMode === 'auto') {
-                if (gameState.spinCount === 1) {
+                // In auto mode, there's only 1 spin, so show modal after first (and only) spin
+                if (gameState.spinCount >= 1) {
                     this.showWinText(this.config.spins.first.winText);
                     setTimeout(() => {
                         this.spriteManager.stop();
@@ -257,6 +275,17 @@ export class Game1 {
         });
 
         return spinPromise;
+    }
+
+    // Static method to get current settings from URL params or environment variables (same as in DevPanel)
+    getSettingsFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        
+        // First check environment variables (set during build), then URL params, then defaults
+        const mode = params.get('mode') || import.meta.env.VITE_GAME_MODE || 'button';
+        const country = params.get('country') || import.meta.env.VITE_COUNTRY || 'standard';
+        
+        return { mode, country };
     }
 }
 

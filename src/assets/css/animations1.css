@@ -47,17 +47,17 @@
 
 @keyframes win-text-appear {
     0% {
-        transform: translate(-50%, -50%) scale(0.3);
+        transform: translate(-50%, 0) scale(0.3);
         opacity: 0;
         text-shadow: 0 0 10px rgba(255, 215, 0, 0);
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translate(-50%, 0) scale(1.1);
         opacity: 1;
         text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
     }
     100% {
-        transform: translate(-50%, -50%) scale(0.9);
+        transform: translate(-50%, 0) scale(0.9);
         opacity: 1;
         text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
     }
@@ -65,17 +65,17 @@
 
 @keyframes float-and-glow {
     0% {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, 0) scale(1);
         text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
         filter: brightness(1);
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translate(-50%, 0) scale(1.1);
         text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 165, 0, 0.8);
         filter: brightness(1.2);
     }
     100% {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, 0) scale(1);
         text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
         filter: brightness(1);
     }

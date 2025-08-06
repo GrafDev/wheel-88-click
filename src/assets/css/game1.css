@@ -112,9 +112,9 @@
 
 .win-text {
     position: absolute;
-    top: 20%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     font-size: var(--win-text-size);
     font-weight: bold;
     color: #FFD700;
@@ -129,10 +129,16 @@
     visibility: hidden;
     text-align: center;
     white-space: pre-line;
+    line-height: 0.7;
+    padding-top: 0.2em;
 }
 
 .game-mode-button .win-text {
-    top: 15%;
+    top: 12%;
+}
+
+.game-mode-auto .win-text {
+    top: 12%;
 }
 
 .win-text .big-text {

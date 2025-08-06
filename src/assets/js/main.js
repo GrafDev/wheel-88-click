@@ -7,6 +7,8 @@ import { DragonAnimations } from './dragon-animations.js';
 import { FireSpriteManager } from './fire-sprite-manager.js';
 import { initializeApp } from 'firebase/app';
 import { gameConfig } from './config.js';
+import { DevPanel } from './dev-panel.js';
+import { getImagePath } from './images.js';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -152,8 +154,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener('resize', setIOSLandscapeVh);
     window.addEventListener('orientationchange', setIOSLandscapeVh);
 
-    const gameMode = import.meta.env.VITE_GAME_MODE || 'button';
-    const country = import.meta.env.VITE_COUNTRY || 'standard';
+    // Get settings from URL params with defaults: standard/button
+    const urlSettings = DevPanel.getSettingsFromURL();
+    const gameMode = urlSettings.mode;
+    const country = urlSettings.country;
     const config = gameConfig[country][gameMode];
     
     const images = [
@@ -163,13 +167,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         new URL('/src/assets/images/logo02_dragons.png', import.meta.url).href,
         new URL('/src/assets/images/arrow.png', import.meta.url).href,
         new URL('/src/assets/images/wheel.png', import.meta.url).href,
-        new URL(`/src/assets/images/${config.wheelText}`, import.meta.url).href,
+        getImagePath(config.wheelText),
         new URL('/src/assets/images/button_spin.png', import.meta.url).href,
         new URL('/src/assets/images/button_spin_hover.png', import.meta.url).href,
         new URL('/src/assets/images/sector.png', import.meta.url).href,
         new URL('/src/assets/images/counter.png', import.meta.url).href,
         new URL('/src/assets/images/globs.png', import.meta.url).href,
-        new URL('/src/assets/images/modal_bg.png', import.meta.url).href,
+        getImagePath(config.modalBg),
         new URL('/src/assets/images/modal_button_bg.png', import.meta.url).href,
         new URL('/src/assets/images/bg_desktop.png', import.meta.url).href,
         new URL('/src/assets/images/bg_mobile.png', import.meta.url).href,
@@ -219,7 +223,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Set wheel text image from config
         const wheelTextImage = document.getElementById('wheel-text-image');
         if (wheelTextImage && config.wheelText) {
-            wheelTextImage.src = `./src/assets/images/${config.wheelText}`;
+            wheelTextImage.src = getImagePath(config.wheelText);
         }
         
         const counterTextElement = document.querySelector('.counter-text');
@@ -250,6 +254,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         updateTexts();
+        
+        // Initialize dev panel in development mode
+        if (import.meta.env.DEV || import.meta.env.MODE === 'development') {
+            new DevPanel();
+        }
     } catch (error) {
         console.error('Failed to initialize the game:', error);
     }

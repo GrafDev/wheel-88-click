@@ -45,10 +45,10 @@ export default defineConfig(({ mode }) => {
         }
     },
     build: {
-        outDir: mode === 'auto' ? 'dist-auto' : 
-                mode === 'button' ? 'dist-button' : 
-                mode === 'auto-canada' ? 'dist-auto-canada' : 
-                mode === 'button-canada' ? 'dist-button-canada' : 'dist',
+        outDir: mode === 'auto' ? 'dist/wheel-88-auto' : 
+                mode === 'button' ? 'dist/wheel-88-button' : 
+                mode === 'auto-canada' ? 'dist/wheel-88-auto-canada' : 
+                mode === 'button-canada' ? 'dist/wheel-88-button-canada' : 'dist',
         assetsDir: 'assets',
         cssCodeSplit: true,
         cssMinify: true,
