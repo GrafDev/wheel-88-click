@@ -16,5 +16,5 @@ const imageMap = {
 
 // Export function to get image path
 export function getImagePath(imageName) {
-    return imageMap[imageName] || `./src/assets/images/${imageName}`;
+    return imageMap[imageName] || new URL(`../images/${imageName}`, import.meta.url).href;
 }

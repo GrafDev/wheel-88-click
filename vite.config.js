@@ -31,6 +31,7 @@ export default defineConfig(({ mode }) => {
     const mergedEnv = { ...publicEnv, ...privateEnv, ...currentSettings }
     
     return {
+    base: './',
     server: {
         open: true,
         port: 5173
